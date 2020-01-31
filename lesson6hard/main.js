@@ -34,11 +34,12 @@ function showAnswer() {
   let num = 12;
   let attempts = 10;
   let checkNum = function () {
-    let answer = prompt('Угадай число от 1 до 100');
-    let showAttempts = function () {
+    let answer = prompt('Угадай число от 1 до 100. У тебя 10 попыток');
+   /* 
+  let showAttempts = function () {
     attempts--;
     return attempts;
-    }
+  }*/
     if 
     (attempts <= 0) {
       confirm('Попытки закончились. Хотите сыграть еще?');
@@ -59,8 +60,8 @@ function showAnswer() {
     
     else if 
       (+answer > num) {
-        showAttempts();
-        console.dir(showAttempts);
+        --attempts;
+        console.log('attempts: ', attempts);
         alert('Загаданное число меньше. Количество попыток: ' + (+attempts+1))
         checkNum();
         console.dir(checkNum);
@@ -74,14 +75,14 @@ function showAnswer() {
 
     else if
       (+answer < num && answer !== null) {
-        showAttempts();
+        --attempts;
+        console.log('attempts: ', attempts);
         alert('Загаданное число больше. Количество попыток: ' + (+attempts+1));
         checkNum();
         console.dir(checkNum);
     }
   
 
-    return showAttempts();
   }
 
   return checkNum();
@@ -89,7 +90,6 @@ function showAnswer() {
 
 play = showAnswer();
 console.log(play);
-
 
 
  
