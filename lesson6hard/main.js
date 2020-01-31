@@ -31,17 +31,17 @@ let isNumber = function(n) {
 
 
 function showAnswer() {
-  let num = 12;
+  let num = Math.floor(Math.random() * Math.floor(100)) + 1;
   let attempts = 10;
   let checkNum = function () {
-    let answer = prompt('Угадай число от 1 до 100. У тебя 10 попыток');
+    let answer = prompt('Угадай число от 1 до 100');
    /* 
   let showAttempts = function () {
     attempts--;
     return attempts;
   }*/
     if 
-    (attempts <= 0) {
+    (attempts <= 1) {
       confirm('Попытки закончились. Хотите сыграть еще?');
       showAnswer();
     }
@@ -57,39 +57,38 @@ function showAnswer() {
         console.dir(checkNum);
         
     } 
-    
-    else if 
-      (+answer > num) {
-        --attempts;
-        console.log('attempts: ', attempts);
-        alert('Загаданное число меньше. Количество попыток: ' + (+attempts+1))
-        checkNum();
-        console.dir(checkNum);
-        
-    }
 
     else if
       (+answer === num) {
-        alert('Ты отгадал! Молодец');
+        alert('Ты отгадал, Молодец! Затраченное количество попыток: ' + (10 - +attempts));
     }
-
-    else if
-      (+answer < num && answer !== null) {
-        --attempts;
+    
+    else {
+      if 
+        (+answer > num) {
+          attempts--;
+          console.log('attempts: ', attempts);
+          alert('Загаданное число меньше. Количество попыток: ' + attempts)
+          
+      }
+      else
+      //(+answer < num && answer) 
+      {
+        attempts--;
         console.log('attempts: ', attempts);
-        alert('Загаданное число больше. Количество попыток: ' + (+attempts+1));
-        checkNum();
-        console.dir(checkNum);
+        alert('Загаданное число больше. Количество попыток: ' + attempts);
+        
+      }
+    checkNum();
+    console.dir(checkNum);
     }
-  
 
   }
 
-  return checkNum();
+  checkNum();
 }
 
 play = showAnswer();
-console.log(play);
 
 
  
