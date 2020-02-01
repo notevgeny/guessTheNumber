@@ -31,64 +31,60 @@ let isNumber = function(n) {
 
 
 function showAnswer() {
-  let num = Math.floor(Math.random() * Math.floor(100)) + 1;
+  let num = Math.floor(Math.random() * 100) + 1;
   let attempts = 10;
-  let checkNum = function () {
-    let answer = prompt('Угадай число от 1 до 100');
-   /* 
-  let showAttempts = function () {
-    attempts--;
-    return attempts;
-  }*/
-    if 
-    (attempts <= 1) {
-      confirm('Попытки закончились. Хотите сыграть еще?');
+
+  function answerToPlay(message) {
+    if (confirm(message)) {
       showAnswer();
     }
-    else  if
+  }
+
+  let checkNum = function () {
+    let answer = prompt('Угадай число от 1 до 100');
+
+    if
       (answer === null) {
         return alert('До встречи!');
-    }
-        
+      }
+
+    else if
+      (+answer === num) {
+          if (
+            answerToPlay('Ты отгадал, молодец! Затраченное количество попыток: ' + (10 - +attempts) + '\nБудем играть еще?'));
+      }
     else if
       (!isNumber(answer) || (answer === '')) {
         alert('Введи число!');
         checkNum();
-        console.dir(checkNum);
-        
-    } 
-
-    else if
-      (+answer === num) {
-        alert('Ты отгадал, Молодец! Затраченное количество попыток: ' + (10 - +attempts));
-    }
-    
+        console.dir(checkNum);  
+      } 
     else {
-      if 
-        (+answer > num) {
-          attempts--;
-          console.log('attempts: ', attempts);
-          alert('Загаданное число меньше. Количество попыток: ' + attempts)
-          
+      attempts--;
+      if (attempts > 0) {
+        if 
+          (+answer > num) {
+            attempts--;
+            alert('Загаданное число меньше. Количество попыток: ' + attempts)
+            
+        }
+        else {
+            alert('Загаданное число больше. Количество попыток: ' + attempts);
+        }
+        checkNum();
+      
       }
-      else
-      //(+answer < num && answer) 
-      {
-        attempts--;
-        console.log('attempts: ', attempts);
-        alert('Загаданное число больше. Количество попыток: ' + attempts);
-        
-      }
-    checkNum();
-    console.dir(checkNum);
+      else 
+        {
+          answerToPlay('Попытки закончились. Хотите сыграть еще?');
+        }
+      console.dir(checkNum);
     }
-
   }
-
   checkNum();
 }
 
-play = showAnswer();
+showAnswer();
 
 
  
