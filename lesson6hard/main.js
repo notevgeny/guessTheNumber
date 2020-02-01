@@ -78,10 +78,11 @@ function showAnswer() {
         {
           answerToPlay('Попытки закончились. Хотите сыграть еще?');
         }
-      console.dir(checkNum);
+      
     }
   }
   checkNum();
+  console.dir(checkNum);
 }
 
 showAnswer();
